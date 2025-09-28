@@ -1,33 +1,69 @@
-# LWMNet: Lightweight Mamba-centric Wavelet-enhanced Progressive Salient Object Detection in Optical Remote Sensing
+# 🌊 LWMNet: Lightweight Mamba-centric Wavelet-enhanced Progressive Salient Object Detection in Optical Remote Sensing
 
-Welcome to the official repository for the paper "LWMNet: Lightweight Mamba-centric Wavelet-enhanced Progressive Salient Object Detection in Optical Remote Sensing".
+Official repository for the paper:  
+**"LWMNet: Lightweight Mamba-centric Wavelet-enhanced Progressive Salient Object Detection in Optical Remote Sensing"**
 
-### Network Architecture
+---
 
-![image](https://github.com/elaxEgan/LWMNet/blob/main/img/LMWNet.jpeg)
+## 📖 Overview
+Salient Object Detection (SOD) in **Optical Remote Sensing Images (ORSI)** faces challenges such as **complex backgrounds, object scale variation, and limited computational resources**.  
+To address these, we propose **LWMNet**, a **lightweight yet effective** framework that integrates:
+- **Mamba-centric encoder** for efficient sequence modeling.  
+- **Wavelet-enhanced multi-scale feature extraction** to capture both local and global contexts.  
+- **Progressive decoding strategy** for precise saliency map generation.  
 
-### Comparison with SOTA methods
+> 🚀 LWMNet achieves **competitive accuracy with fewer parameters** compared to recent SOTA methods.
 
-![image](https://github.com/elaxEgan/LWMNet/blob/main/img/exp.jpeg)
+---
 
-### Trained Weights of MTPNet for Testing
-We provide Trained Weights of our LMWNet.
-[Download](https://pan.baidu.com/s/1FcqegbFOtavmv4FZLpipEg&pwd=48ow)
+## 🏗️ Network Architecture
+<p align="center">
+  <img src="https://github.com/elaxEgan/LWMNet/blob/main/img/LMWNet.jpeg" width="80%">
+</p>
 
-### Train
-Please download the pre-trained model weights and dataset first. Next, generate the path of the training set and the test set, and change the dataset path in the code to the path of the dataset you specified.
+---
 
-~~~python
+## 📊 Comparison with State-of-the-Art
+<p align="center">
+  <img src="https://github.com/elaxEgan/LWMNet/blob/main/img/exp.jpeg" width="90%">
+</p>
+
+LWMNet consistently outperforms existing lightweight approaches while maintaining efficiency.
+
+---
+
+## 📦 Resources
+
+🔗 **Pretrained Weights**  
+- [Download LWMNet Weights (Baidu)](https://pan.baidu.com/s/1FcqegbFOtavmv4FZLpipEg&pwd=48ow)  
+
+🔗 **Saliency Maps**  
+- [Download Saliency Maps (Baidu)](https://pan.baidu.com/s/1E5RBCvGUhaOTOUmxoOVFKA&pwd=shst)  
+
+---
+
+## ⚙️ Installation
+
+Clone this repository:
+```bash
+git clone https://github.com/elaxEgan/LWMNet.git
+cd LWMNet
+
+---
+
+## 🏋️ Training
+
+1. Download the **pre-trained model weights** and dataset.  
+2. Modify the dataset path in the config file or training script.  
+3. Run training:
+
+```bash
 python train.py
-~~~
 
-### Inference
-Download the MTPNet model weights, create the necessary directories to store these files, and be sure to update the corresponding paths in the code accordingly. 
+## 🔎 Inference
+Download the trained LWMNet weights.
+Set the weight paths in infer.py.
+Run inference:
 
-~~~python
+```bash
 python infer.py
-~~~
-
-### Saliency maps
-We provide saliency maps of our LMWNet on ORSSD，EORSSD and ORSI-4199 datasets.
-[Download](https://pan.baidu.com/s/1E5RBCvGUhaOTOUmxoOVFKA&pwd=shst)
