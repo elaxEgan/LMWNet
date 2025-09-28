@@ -50,20 +50,3 @@ git clone https://github.com/elaxEgan/LWMNet.git
 cd LWMNet
 
 ---
-
-## 🏋️ Training
-
-1. Download the **pre-trained model weights** and dataset.  
-2. Modify the dataset path in the config file or training script.  
-3. Run training:
-
-```bash
-python train.py
-
-## 🔎 Inference
-Download the trained LWMNet weights.
-Set the weight paths in infer.py.
-Run inference:
-
-```bash
-python infer.py
