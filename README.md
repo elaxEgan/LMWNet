@@ -4,3 +4,4 @@ Welcome to the official repository for the paper "LWMNet: Lightweight Mamba-cent
 
 ### Network Architecture
 
+![image](https://github.com/elaxEgan/LWMNet/blob/main/img/LMWNet.jpeg)
