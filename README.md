@@ -42,16 +42,16 @@ LWMNet consistently outperforms existing lightweight approaches while maintainin
 
 ---
 
-## ⚙️ Installation
+## ⚙️ Getting Started
 
 Clone this repository:
 ```bash
-git clone https://github.com/elaxEgan/LWMNet.git
-cd LWMNet
-
+git clone https://github.com/elaxEgan/LMWNet.git
+cd LMWNet
+```
 ---
 
-## 🏋️ Training
+ **🏋️ Train**
 
 Download the pre-trained model weights and dataset.
 Modify the dataset path in the config file or training script.
@@ -59,10 +59,11 @@ Run training:
 ```bash
 python train.py
 
-
-## 🔎 Inference
+```
+**🔎 Inference**
 Download the trained LWMNet weights.
 Set the weight paths in infer.py.
 Run inference:
 ```bash
 python infer.py
+```
