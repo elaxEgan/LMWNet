@@ -1,7 +1,7 @@
-# 🌊 LWMNet: Lightweight Mamba-centric Wavelet-enhanced Progressive Salient Object Detection in Optical Remote Sensing
+#  (mamba_icon.png) Wavelet-Compensated Mamba for Efficient Salient Object Detection in Optical Remote Sensing Imagery
 
 Official repository for the paper:  
-**"LWMNet: Lightweight Mamba-centric Wavelet-enhanced Progressive Salient Object Detection in Optical Remote Sensing"**
+**"Wavelet-Compensated Mamba for Efficient Salient Object Detection in Optical Remote Sensing Imagery"**
 
 ---
 
