@@ -1,4 +1,4 @@
-#  (mamba_icon.png) Wavelet-Compensated Mamba for Efficient Salient Object Detection in Optical Remote Sensing Imagery
+#  ![Mamba](mamba.png) Wavelet-Compensated Mamba for Efficient Salient Object Detection in Optical Remote Sensing Imagery
 
 Official repository for the paper:  
 **"Wavelet-Compensated Mamba for Efficient Salient Object Detection in Optical Remote Sensing Imagery"**
