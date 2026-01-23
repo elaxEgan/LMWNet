@@ -1,4 +1,4 @@
-#  ![Mamba](mamba.jepg) Wavelet-Compensated Mamba for Efficient Salient Object Detection in Optical Remote Sensing Imagery
+#  ![Mamba](https://github.com/elaxEgan/LMWNet/blob/main/mamba.jpeg) Wavelet-Compensated Mamba for Efficient Salient Object Detection in Optical Remote Sensing Imagery
 
 Official repository for the paper:  
 **"Wavelet-Compensated Mamba for Efficient Salient Object Detection in Optical Remote Sensing Imagery"**
