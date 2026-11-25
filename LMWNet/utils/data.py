@@ -1,9 +1,11 @@
-import os, glob, random
+import os
+
+import numpy as np
 from PIL import Image
 import torch.utils.data as data
 import torchvision.transforms as transforms
 
-
+from . import transform as paired
 
 class SalObjDataset(data.Dataset):
     def __init__(self, image_root, gt_root, trainsize):
@@ -14,22 +16,20 @@ class SalObjDataset(data.Dataset):
         self.gts = sorted(self.gts)
         self.size = len(self.images)
 
-        self.img_transform = transforms.Compose([
-            transforms.Resize((self.trainsize, self.trainsize)),
+        # Leave room for a random crop retaining 90% of each side.
+        resize_size = round(trainsize / 0.9)
+        self.train_transform = paired.Compose([
+            paired.Resize((resize_size, resize_size)),
+            paired.RandomHorizontalFlip(p=0.5),
+            paired.RandRotate((-15, 15), padding=[0, 0, 0], ignore_label=0, p=0.5),
+            paired.Crop(trainsize, crop_type='rand'),
             transforms.ToTensor(),
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
-        self.gt_transform = transforms.Compose([
-            transforms.Resize((self.trainsize, self.trainsize)),
-            transforms.ToTensor()])
-
 
     def __getitem__(self, index):
         image = self.rgb_loader(self.images[index])
         gt = self.binary_loader(self.gts[index])
-        image = self.img_transform(image)
-        gt = self.gt_transform(gt)
-
-        return image, gt
+        return self.train_transform(np.asarray(image), np.asarray(gt))
 
     def rgb_loader(self, path):
         with open(path, 'rb') as f:
