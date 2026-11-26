@@ -61,7 +61,7 @@ size_rates = [0.75, 1, 1.25]  # multi-scale training
 
 def train(train_loader, model, optimizer, epoch):
     model.train()
-    loss_record1, loss_record2, loss_record3, loss_record4, loss_record5, loss_record6 = AvgMeter(), AvgMeter(), AvgMeter(), AvgMeter(), AvgMeter(), AvgMeter()
+    loss_record1, loss_record2, loss_record3, loss_record4, loss_record5 = AvgMeter(), AvgMeter(), AvgMeter(), AvgMeter(), AvgMeter()
     for i, pack in enumerate(train_loader, start=1):
         for rate in size_rates:
             optimizer.zero_grad()
@@ -78,16 +78,15 @@ def train(train_loader, model, optimizer, epoch):
                 images = F.interpolate(images, size=(trainsize, trainsize), mode='bilinear', align_corners=True)
                 gts = F.interpolate(gts, size=(trainsize, trainsize), mode='bilinear', align_corners=True)
 
-            sal, sal_sig, s1, s1_sig, s2, s2_sig, s3, s3_sig, s4, s4_sig, s5, s5_sig = model(images)
+            _, _, s1, s1_sig, s2, s2_sig, s3, s3_sig, s4, s4_sig, s5, s5_sig = model(images)
             # bce+iou+fmloss
             loss1 = CE(s1, gts) + IOU(s1_sig, gts) + floss(s1_sig, gts)
             loss2 = CE(s2, gts) + IOU(s2_sig, gts) + floss(s2_sig, gts)
             loss3 = CE(s3, gts) + IOU(s3_sig, gts) + floss(s3_sig, gts)
             loss4 = CE(s4, gts) + IOU(s4_sig, gts) + floss(s4_sig, gts)
             loss5 = CE(s5, gts) + IOU(s5_sig, gts) + floss(s5_sig, gts)
-            loss6 = CE(sal, gts) + IOU(sal_sig, gts) + floss(sal_sig, gts)
 
-            loss = loss1 + loss2 + loss3 + loss4 + loss5 + loss6
+            loss = loss1 + loss2 + loss3 + loss4 + loss5
             loss.backward()
 
             clip_gradient(optimizer, opt.clip)
@@ -99,14 +98,13 @@ def train(train_loader, model, optimizer, epoch):
                 loss_record3.update(loss3.data, opt.batchsize)
                 loss_record4.update(loss4.data, opt.batchsize)
                 loss_record5.update(loss5.data, opt.batchsize)
-                loss_record6.update(loss6.data, opt.batchsize)
 
         if i % 20 == 0 or i == total_step:
             print(
-                '{} Epoch [{:03d}/{:03d}], Step [{:04d}/{:04d}], Learning Rate: {}, Loss: {:.4f}, Loss1: {:.4f}, Loss2: {:.4f}, Loss6: {:.4f}'.
+                '{} Epoch [{:03d}/{:03d}], Step [{:04d}/{:04d}], Learning Rate: {}, Loss: {:.4f}, Loss1: {:.4f}, Loss2: {:.4f}'.
                 format(datetime.now(), epoch, opt.epoch, i, total_step,
                        opt.lr * opt.decay_rate ** (epoch // opt.decay_epoch), loss.data, loss1.data,
-                       loss2.data, loss6.data))
+                       loss2.data))
 
     save_path = 'models/Light_FMamba/'
     if not os.path.exists(save_path):
