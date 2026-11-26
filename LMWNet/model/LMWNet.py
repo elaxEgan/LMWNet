@@ -571,7 +571,7 @@ class Block(nn.Module):
     def forward(self, input: torch.Tensor):
         x1, x2, x3 = self.split(input)
 
-        left = self.bn2(self.conv2(x3))
+        left = F.relu(self.bn2(self.conv2(x3)))
 
         c1, c2 = torch.chunk(left, 2, 1)
         left = torch.cat([c2, x2], 1)
