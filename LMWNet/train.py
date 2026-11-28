@@ -78,7 +78,7 @@ def train(train_loader, model, optimizer, epoch):
                 images = F.interpolate(images, size=(trainsize, trainsize), mode='bilinear', align_corners=True)
                 gts = F.interpolate(gts, size=(trainsize, trainsize), mode='bilinear', align_corners=True)
 
-             _, _, s1, s1_sig, s2, s2_sig, s3, s3_sig, s4, s4_sig, s5, s5_sig = model(images)
+            _, _, s1, s1_sig, s2, s2_sig, s3, s3_sig, s4, s4_sig, s5, s5_sig = model(images)
             # bce+iou+fmloss
             loss1 = CE(s1, gts) + IOU(s1_sig, gts) + floss(s1_sig, gts)
             loss2 = CE(s2, gts) + IOU(s2_sig, gts) + floss(s2_sig, gts)
